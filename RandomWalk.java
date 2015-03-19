@@ -34,10 +34,14 @@ public class RandomWalk {
         if (!this.isDone()) {
             int choice = rand.nextInt(2);
             //System.out.println("Choice = " + choice);
-            if (choice == 0) {                      // go up
+            if (choice == 0 && last.y > 0) {                      // go up
                 last = new Point(last.x, last.y - 1);
-            } else {                                // go left
+            } else if (choice == 1 && last.x > 0) {                                // go left
                 last = new Point(last.x - 1, last.y);
+            } else if (choice == 0 && last.y == 0) {
+                last = new Point(last.x - 1, last.y);
+            } else if (choice == 1 && last.x == 0) {
+                last = new Point(last.x, last.y - 1);
             }
             walk.add(last);
         }
