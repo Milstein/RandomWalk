@@ -15,23 +15,19 @@ public class RandomWalk {
 	private boolean done = false;
 	private ArrayList<Point> walk = null;
 
-	public RandomWalk(int size) {
-		rand = new Random();
-		ArrayList<Point> walk = new ArrayList<Point>();
-		done = false;
-		walk = new ArrayList<Point>();
-		walk.add(new Point(size, size));
-		// target
-	}
-	
-	public RandomWalk(int size, long seed) {
-		rand = new Random(seed);
-		ArrayList<Point> walk = new ArrayList<Point>();
-		done = false;
-		walk = new ArrayList<Point>();
-		walk.add(new Point(size, size));
-		// target
-	}
+    public RandomWalk(int Size, long Seed) {
+        rand = new Random(Seed);
+        walk = new ArrayList<Point>();
+        walk.add(new Point(size, size));
+        //target
+    }
+
+    public RandomWalk(int Size) {
+        rand = new Random(0);
+        walk = new ArrayList<Point>();
+        walk.add(new Point(size, size));
+        //target
+    }
 
 	private boolean checkSolution() {
 		Point p = walk.get(0);
