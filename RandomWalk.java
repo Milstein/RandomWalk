@@ -15,14 +15,14 @@ public class RandomWalk {
 	private boolean done = false;
 	private ArrayList<Point> walk = null;
 
-    public RandomWalk(int Size, long Seed) {
-        rand = new Random(Seed);
+    public RandomWalk(int size, long seed) {
+        rand = new Random(seed);
         walk = new ArrayList<Point>();
         walk.add(new Point(size, size));
         //target
     }
 
-    public RandomWalk(int Size) {
+    public RandomWalk(int size) {
         rand = new Random(0);
         walk = new ArrayList<Point>();
         walk.add(new Point(size, size));
