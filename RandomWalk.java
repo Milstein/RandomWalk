@@ -23,10 +23,7 @@ public class RandomWalk {
     }
 
     public RandomWalk(int size) {
-        rand = new Random(0);
-        walk = new ArrayList<Point>();
-        walk.add(new Point(size, size));
-        //target
+        this(size, 0);
     }
 
 	private boolean checkSolution() {
