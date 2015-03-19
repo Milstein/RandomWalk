@@ -34,8 +34,7 @@ public class RandomWalk {
 	public void step() {
 		if (!this.isDone()) {
 			int choice = rand.nextInt(2);
-			Point p = walk.get(0);
-			System.out.println("Choice = " + choice);
+			//System.out.println("Choice = " + choice);
 			if (choice == 0) {                      // go up
 				last = new Point(last.x, last.y - 1);
 			} else {                                // go left
