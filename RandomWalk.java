@@ -4,57 +4,45 @@ import java.awt.Point;
 
 /**
  * Example RandomWalk created in 5 march lecture
- * 
+ *
  * @author Ian Truslow
  *
  */
 
 public class RandomWalk {
 
-	private Random rand = null;
-	private boolean done = false;
-	private ArrayList<Point> walk = null;
+	private Random rand;
+	private ArrayList<Point> walk;
+    private Point last;
 
     public RandomWalk(int size, long seed) {
         rand = new Random(seed);
         walk = new ArrayList<Point>();
-        walk.add(new Point(size, size));
-        //target
+        last = new Point(size, size);
+        walk.add(last);
     }
 
     public RandomWalk(int size) {
         this(size, 0);
     }
 
-	private boolean checkSolution() {
-		Point p = walk.get(0);
+	public boolean isDone() {
+		Point p = last;
 		return (p.x == 0 && p.y == 0);
 	}
 
 	public void step() {
-		this.done = checkSolution();
-		if (!done) {
+		if (!this.isDone()) {
 			int choice = rand.nextInt(2);
 			Point p = walk.get(0);
-			System.out.println("Choice=" + choice);
-			if (choice == 0) {
-				// go up
-				walk.add(new Point(p.x, p.y - 1));
-			} else {
-				// go left
-				walk.add(new Point(p.x - 1, p.y));
+			System.out.println("Choice = " + choice);
+			if (choice == 0) {                      // go up
+				last = new Point(last.x, last.y - 1);
+			} else {                                // go left
+                last = new Point(last.x - 1, last.y);
 			}
+            walk.add(last);
 		}
-	}
-
-	public void createWalk() {
-		while (!done) {
-			step();
-		}
-	}
-
-	public boolean isDone() {
-		return done;
 	}
 
 	public ArrayList<Point> getPath() {
@@ -68,11 +56,4 @@ public class RandomWalk {
 		}
 		return rVal;
 	}
-
-	public static void main(String foo[]) {
-		RandomWalk w = new RandomWalk(4);
-		w.createWalk();
-		System.out.println(w);
-	}
-
 }
